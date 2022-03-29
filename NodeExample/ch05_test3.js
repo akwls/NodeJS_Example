@@ -16,6 +16,7 @@ server.on('request', function(req, res) {
     res.writeHead(200, {'Content-type' : 'text/html; charset=utf-8'})
     res.write('<title>응답 페이지</title>')
     res.write('<h1>노드제이에스로부터의 응답 페이지</h1>')
+    // write에서 쓴 문자열을 end에서 화면에 출력함.
     res.end();
 })
 

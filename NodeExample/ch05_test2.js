@@ -6,6 +6,7 @@ server.listen(port, function() {
     console.log('웹 서버가 시작되었습니다. : %d', port)
 })
 
+// connection 이벤트에 함수를 등록함.
 server.on('connection', function(socket) {
     var addr = socket.address();
     console.log('클라이언트가 접속했습니다. : %s. %d', addr.address, addr.port)
