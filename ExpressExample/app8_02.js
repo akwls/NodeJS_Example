@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use('/public', static(path.join(__dirname, 'public')))
 
+
+
 router.route('/process/login/:name').post(function(req, res) {
     console.log('/process/login/:name 처리함')
 
@@ -30,6 +32,10 @@ router.route('/process/login/:name').post(function(req, res) {
 })
 
 app.use('/', router)
+
+app.all('*', function(req, res) {
+    res.status(404).send('<h1>ERROR - 페이지를 찾을 수 없습니다.</h1>')
+})
 
 http.createServer(app).listen(3000);
 
