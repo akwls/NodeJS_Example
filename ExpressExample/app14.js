@@ -13,7 +13,7 @@ var app = express();
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-app.use('/public', static(path.join(__dirname, 'public')))
+app.use('/', static(path.join(__dirname, 'public')))
 app.use('/uploads', static(path.join(__dirname, 'uploads')))
 
 app.use(expressSession({
@@ -31,7 +31,7 @@ var storage = multer.diskStorage({
     },
     filename: function(req, file, callback) {
         var extension = path.extname(file.originalname)
-        var basename = path.basename(file.originalname)
+        var basename = path.basename(file.originalname, extension)
         callback(null, basename+Date.now()+extension)
     }
 })
@@ -71,7 +71,7 @@ router.route('/process/photomulti').post(upload.array('photo', 10), function(req
                 mimetype = files[index].mimetype
                 size = files[index].size
 
-                res.write('<h3>' + (index+1) + '번째 파일 업로드 성공</h3>')
+                res.write('<h3>김하진님 ' + (index+1) + '번째 파일 업로드 성공</h3>')
                 res.write('<hr />')
                 res.write('<p>원본 파일명 : ' +  originalname + ' -> 저장 파일명 : ' + filename + '</p>')
                 res.write('<p>MIME TYPE : ' + mimetype + '</p>')
