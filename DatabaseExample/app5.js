@@ -29,7 +29,7 @@ var UserSchema;
 var UserModel;
 
 function connectDB() {
-    var databaseUrl = 'mongodb://127.0.0.1:27017/local'
+    var databaseUrl = 'mongodb+srv://hajin7481:rlagkwls1004@cluster0.z03i3o8.mongodb.net/test'
 
     console.log("데이터베이스 연결을 시도합니다.");
     mongoose.Promise = global.Promise;
