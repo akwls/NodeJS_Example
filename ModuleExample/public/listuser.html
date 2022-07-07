@@ -3,12 +3,46 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>사용자 리스트 테스트</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+        <style>
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+			html {
+				width: 100%;
+				height: 100%;
+			}
+			body {
+				width: 100%;
+				height: 100%;
+				color: #000;
+				background-color: #fff;
+			}
+			@media screen and (min-width: 320px) and (max-width: 768px) {
+				#cardbox {
+					width: 90%;
+				}
+				
+				label[id=contentsText] {
+					display: none;
+				}
+			}
+	
+			@media screen and (min-width: 768px) and (max-width: 979px) {
+				#carbox {
+					width: 80%;
+				}
+				
+			}
+		</style>
 	</head>
 	<body>
-        <div class="container">
+        <div class="ui container">
             <div id="cardbox" class="ui blue fluid card">
                 <div class="content">
                     <div class="left floated author">
