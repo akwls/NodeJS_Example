@@ -73,11 +73,20 @@ var adduser = function(req, res) {
                 throw err;
             }
             if(result) {
+                res.writeHead('200', {'Content-Type': 'text/html; charset=utf8'})
                 console.dir(result)
-                res.redirect('/adduser_success.html')
-                // res.writeHead('200', {'Content-Type': 'text/html; charset=utf8'})
-                // res.write('<h2>사용자 추가 성공</h2>')
-                // res.end()
+                var context = {title: '사용자 추가 성공'}
+                req.app.render('adduser', context, function(err, html) {
+                    if(err) {
+                        console.error('뷰 렌더링 중 에러 발생 : ' + err.stack)
+                        res.write('<h2>뷰 렌더링 중 에러 발생</h2>')
+                        res.write('<p>'+err.stack+'</p>')
+                        res.end()
+                        return
+                    }
+                    console.log('rendered : ' + html)
+                    res.end(html)
+                })
             }
             else {
                 // res.writeHead('200', {'Content-Type': 'text/html; charset=utf8'})
@@ -153,7 +162,7 @@ var listuser = function(req, res) {
                 res.end()
                 return
             }
-            if(results) {
+            if(results.length > 0) {
                 console.dir(results)
                 var context = {results: results}
                 req.app.render('listuser', context, function(err, html) {
@@ -170,9 +179,13 @@ var listuser = function(req, res) {
                 })
             }
             else {
-                res.writeHead('200', {'Content-Type': 'text/html; charset=utf8'})
-                res.write('<h2>사용자 리스트 조회 실패</h2>')
-                res.end();
+                var context = {results: results}
+                if(results.length == 0) {
+                    req.app.render('listuser_fail', context, function(err, html) {
+                        console.log('rendered: ' + html)
+                        res.end(html)
+                    })
+                }
             }
         })
     }
