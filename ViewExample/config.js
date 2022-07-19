@@ -1,6 +1,6 @@
 module.exports = {
     server_port: 3000,
-    db_url: 'mongodb://127.0.0.1:27017/local',
+    db_url: 'mongodb+srv://hajin7481:rlagkwls1004@cluster0.z03i3o8.mongodb.net/myuserdb',
 
     db_schemas: [
         {file: './user_schema', collection: 'users3', schemaName: 'UserSchema', modelName: 'UserModel'}
